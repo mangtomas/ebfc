@@ -1,0 +1,20 @@
+<ifModule mod_rewrite.c>
+
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-l
+RewriteCond $1 !^(index\.php|public\.*|private\.*|uploads\.*)
+RewriteRule ^(.*)$ index.php/$1 [L]
+
+#RewriteRule ^(.*)$ index.php/$1 [NC,QSA,L]
+</ifModule>
+
+<IfModule mod_php5.c>
+php_value short_open_tag 1
+#php_value magic_quotes_gpc 0
+#php_value register_globals 0
+#php_value session.auto_start 0
+#php_value upload_max_filesize 20M
+#php_value post_max_size 100M
+</IfModule> 
